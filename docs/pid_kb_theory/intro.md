@@ -8,9 +8,7 @@ The Knowledge Base (KB) is structured around Identifiers as the core entities, w
 
 import DBKB from '/img/pid_kb/db_kb.png';
 
-<img src={DBKB} alt="Siamese cat" style={{width: 400}} />
-
-![KB](/img/pid_kb/db_kb.png)
+<img src={DBKB} alt="Siamese cat" style={{width: 80%}} />
 
 
 This document presents an in-depth theoretical analysis of Identifiers and Providers, their roles, and how they interconnect within the KB model.
