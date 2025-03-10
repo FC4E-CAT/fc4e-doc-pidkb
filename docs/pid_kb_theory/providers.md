@@ -1,10 +1,12 @@
 ---
 title: "Providers"
-sidebar_position: 3
+sidebar_position: 4
 ---
 # Providers as the Backbone of Identifier Distribution
 
 While Identifiers form the foundation of the Knowledge Base, Providers enable, distribute, and maintain these Identifiers. They act as the linking mechanism between Identifiers, Managers, and Authorities.
+
+![Provider](/img/pid_kb/provider.png)
 
 ## What is a Provider?
 
