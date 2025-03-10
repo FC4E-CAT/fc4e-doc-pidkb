@@ -6,7 +6,6 @@ sidebar_position: 3
 
 Identifiers serve as persistent, unique references to digital or physical objects. The KB revolves around the principle that every piece of information is linked to an Identifier either directly or indirectly. This makes Identifiers the fundamental entity in the system.
 
-![Identifiers](/img/pid_kb/identifier.png)
 
 ## The Role of Identifiers
 
