@@ -45,10 +45,10 @@ jobs:
         uses: actions/configure-pages@v3
 
       - name: Upload docs
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           path: 'build'
 
       - name: Run gh action to deploy to github pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
