@@ -1,9 +1,7 @@
 ---
-id: intro
-title: Introduction
+title: "Introduction"
 sidebar_position: 1
 ---
-
-# Intro
+# Introduction to PID Knowledge Base
 
 Getting started with PID Knowledge Base from here
