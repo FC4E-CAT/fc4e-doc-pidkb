@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "PID Knowledge Base (PID KB)"
 sidebar_position: 1
 ---
 # Introduction to PID Knowledge Base

@@ -8,6 +8,10 @@ The **Persistent Identifier (PID) Knowledge Base (KB)** is designed to store and
 
 The KB follows a **relational database model**, ensuring efficient query execution, data integrity, and interoperability with **graph-based identifier systems**. The model is optimized for **scalability**, supporting both **static and dynamic properties** of identifiers and their associated actors.
 
+![Data Model](/img/pid_kb/data_model.png)
+
+
+
 Key components of the **PID KB database** include:
 - **Identifiers** as the central entities.
 - **Providers** responsible for issuing, maintaining, and resolving Identifiers.
