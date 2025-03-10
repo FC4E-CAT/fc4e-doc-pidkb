@@ -17,9 +17,6 @@ There are two additional dimensions to the classification that are not currently
 
 The KB consists of multiple entities, each playing a specific role in the Persistent Identifier (PID) ecosystem.
 
-import entities from '/img/pid_kb/db_kb.png';
-
-<img src={entities} alt="Entities in the PID Knowledge Base " style={{width: 600}} />
 
 
 ## Core Entities
