@@ -2,6 +2,17 @@
 title: "Entities"
 sidebar_position: 2
 ---
+# Entities 
+
+The entities referenced by persistent identifiers can be classified in terms of whether they are objects or an abstract concept agreed upon by humans. Objects can be physical objects with a digital representation or purely digital. Within this broad classification, we have attempted to standardise the entities encountered in the literature review in a consistent manner. 
+
+There are two additional dimensions to the classification that are not currently reflected.
+
+ - There will be specialisation in many cases to accommodate **_domain or industry sector differences_** (for example, the identifiers and associated metadata for instruments in two scientific domains may not be the same).
+ - In some cases, a distinction needs to be made between **_a type and an instance of that type_**. Scientific instruments again provide a good example - there is an instrument type (make and model) that must be unambiguously identifiable, but there are potentially many instances of the instrument (as reflected by distinct serial numbers). The instances have different or additional characteristics - for example each of them can have one or more calibrations that are unique to an instance, and change over time - leading to versions of the instance.
+
+
+
 # Entities in the Knowledge Base (KB)
 
 The KB consists of multiple entities, each playing a specific role in the Persistent Identifier (PID) ecosystem.
