@@ -12,6 +12,17 @@ An Identifier is a structured piece of information used to uniquely and persiste
 
 **Examples:** DOI, ORCID, ISBN, ISSN, ARK, Handle, URN.
 
+
+| Name    | Description | Example | 
+| -------- | ------- | ------- | 
+| DOI  | A DOI is a digital identifier of an object, any object — physical, digital, or abstract. DOIs solve a common problem: keeping track of things. Things can be matter, material, content, or activities.   |10.1000/182 | 
+| ORCID  | a unique, persistent identifier free of charge to researchers  | 0000-0001-9718-6515 |
+| ISBN | An ISBN is an International Standard Book Number. ISBNs were 10 digits in length up to the end of December 2006, but since 1 January 2007 they now always consist of 13 digits. ISBNs are calculated using a specific mathematical formula and include a check digit to validate the number. | 978-92-95055-02-5 |
+| ISSN | An International Standard Serial Number (ISSN) is an eight-digit serial number used to uniquely identify a serial publication (periodical), such as a magazine.| 2049-3630|
+| ARK |An Archival Resource Key (ARK) is a multi-purpose URL suited to being a persistent identifier for information objects of any type. It is widely used by libraries, data centers, archives, museums, publishers, and government agencies to provide reliable references to scholarly, scientific, and cultural objects. | ark:/67531/metapth346554|
+|URN |URNs are globally unique persistent identifiers assigned within defined namespaces so they will be available for a long period of time, even after the resource which they identify ceases to exist or becomes unavailable. | urn:isbn:0451450523 |
+
+
 Identifiers provide a standardized way of referencing digital and physical resources, ensuring long-term accessibility and data interoperability.
 
 ## How Identifiers Are Issued and Managed
