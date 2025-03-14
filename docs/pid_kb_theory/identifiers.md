@@ -4,7 +4,7 @@ sidebar_position: 3
 ---
 # Identifiers as the Core of the Knowledge Base
 
-Identifiers serve as persistent, unique references to digital or physical objects. The KB revolves around the principle that every piece of information is linked to an Identifier either directly or indirectly. This makes Identifiers the fundamental entity in the system.
+Identifiers serve as persistent, unique references to digital or physical objects. The Knowledge Base revolves around the principle that every piece of information is linked to an Identifier either directly or indirectly.  Specifically, Managers can be the issuers (‘minter’) of one or more Identifiers, and of course, an Identifier can be issued by many Managers. This makes Identifiers the fundamental entity in the system. Then as a result a Manager is linked to a specific Provider for a specific Identifier. 
 
 
 ## The Role of Identifiers
@@ -33,11 +33,24 @@ Identifiers provide a standardized way of referencing digital and physical resou
 - **Authorities** (e.g., GS1, DataCite) ensure Identifier uniqueness and enforce compliance with governance standards.
 - **Schemes & Standards** define how Identifiers are structured and maintained.
 
+## Identifier Properties
+
+Identifiers have potentially many Properties, and the structure allows for an unspecified number of defined **Properties** to be linked to an Identifier. It also allows for efficient storage of varying completeness in the scope of Properties known for an Identifier. 
+
+The Properties are also linked, whenever possible, to well-known definitions - for example by schema.org or Wikidata.
+
 ## Identifier Governance and Compliance
 
 - Identifiers are typically backed by a governing Authority that ensures uniqueness and resolvability.
 - Standards & Schemes define frameworks for ensuring Identifier integrity.
 - Some Identifiers are protocol-based, requiring specific technical infrastructure for resolution (e.g., Handle System, DOI).
+
+## Entities Represented by Identifiers
+
+Identifiers can be used to resolve to and represent one or more well-defined Entities, for example Research Outputs, Researchers, Samples, and many more. There are numerous ontologies and vocabularies for describing the Entities that are in scope in the research landscape, and it is ongoing work to reconcile these. At present, we work with a subset on the basis of need, in other words if an Entity is not referenced, we do not list it.
+
+The source of links between Entities and Identifiers are ‘Case Studies’, which include national PID policies and strategies, desktop research, one or two published community surveys, and AI-supported research. These Case Studies have additional attributes, in the sense that they may recommend, mandate, or anticipate the application of an Identifier for a specific Entity, and that their application scope is either national, regional, or global.
+
 
 ## Special Cases in Identifier Management
 
