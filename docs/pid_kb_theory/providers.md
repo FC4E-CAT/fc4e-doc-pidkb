@@ -31,4 +31,4 @@ Providers ensure Identifiers are accessible, resolvable, and governed under spec
 
 - **Providers** work with **Managers** to ensure proper Identifier issuance.
 - **Providers** are regulated by **Authorities**, ensuring compliance.
-- **Providers** may be part of an **MPA**, meaning they follow a collective governance model.
+- **Providers** may be part of an **MPA**, meaning they follow a collective governance model. **Providers** are optionally affiliated and enabled by a ‘Multi-Provider-Agency’ (**MPA**).  There are only two cases of **MPA** in the stack: for DOI-based and for ePIC-based Providers. All other Providers are directly linked to Authorities, who manage the resolution, resolvability, and uniqueness of Identifiers indirectly or directly. 
