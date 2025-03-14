@@ -33,6 +33,12 @@ Identifiers provide a standardized way of referencing digital and physical resou
 - **Authorities** (e.g., GS1, DataCite) ensure Identifier uniqueness and enforce compliance with governance standards.
 - **Schemes & Standards** define how Identifiers are structured and maintained.
 
+## Identifier Properties
+
+Identifiers have potentially many Properties, and the structure allows for an unspecified number of defined Properties to be linked to an Identifier. It also allows for efficient storage of varying completeness in the scope of Properties known for an Identifier. 
+
+The Properties are also linked, whenever possible, to well-known definitions - for example by schema.org or Wikidata.
+
 ## Identifier Governance and Compliance
 
 - Identifiers are typically backed by a governing Authority that ensures uniqueness and resolvability.
