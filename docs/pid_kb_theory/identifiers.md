@@ -4,7 +4,7 @@ sidebar_position: 3
 ---
 # Identifiers as the Core of the Knowledge Base
 
-Identifiers serve as persistent, unique references to digital or physical objects. The KB revolves around the principle that every piece of information is linked to an Identifier either directly or indirectly. This makes Identifiers the fundamental entity in the system.
+Identifiers serve as persistent, unique references to digital or physical objects. The Knowledge Base revolves around the principle that every piece of information is linked to an Identifier either directly or indirectly.  Specifically, Managers can be the issuers (‘minter’) of one or more Identifiers, and of course, an Identifier can be issued by many Managers. This makes Identifiers the fundamental entity in the system. Then as a result a Manager is linked to a specific Provider for a specific Identifier. 
 
 
 ## The Role of Identifiers
