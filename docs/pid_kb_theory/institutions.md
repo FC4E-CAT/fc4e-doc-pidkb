@@ -2,7 +2,6 @@
 title:"Unique Institutions"
 sidebar_position:5
 ---
-
 # Identifiers as the Core of the Knowledge Base
 
 **Managers, Providers, Authorities, and Standards Bodies** are not necessarily equivalent to an organisation or an institution. 
