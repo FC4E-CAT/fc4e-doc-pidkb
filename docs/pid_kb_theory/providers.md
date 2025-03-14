@@ -6,6 +6,12 @@ sidebar_position: 4
 
 While Identifiers form the foundation of the Knowledge Base, Providers enable, distribute, and maintain these Identifiers. They act as the linking mechanism between Identifiers, Managers, and Authorities.
 
+The situation is not very common, but a Provider can potentially offer more than one Identifier to the same Manager. There is also a special case where either the Manager(s) for a specific Identifier/ Provider combination are not known, or where Providers issue Identfiers directly to Owners without a Manager as an intermediary. The accommodate this, there is a ‘Not Applicable’ Manager instance in the table.
+
+A complication arises for some of the data that we have been able to obtain from registries. 
+As an example, re3data offers information on PID use by repositories (by definition Managers). But - some PID Identifiers are listed very generically, for example ‘DOI’ or ‘Handle’: we have no information about which DOI or Handle Provider (of which there can be several) is implied.
+For these cases, we link to a generic Provider - ‘Unknown’.
+
 
 ## What is a Provider?
 
