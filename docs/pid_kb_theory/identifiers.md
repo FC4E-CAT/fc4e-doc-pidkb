@@ -35,7 +35,7 @@ Identifiers provide a standardized way of referencing digital and physical resou
 
 ## Identifier Properties
 
-Identifiers have potentially many Properties, and the structure allows for an unspecified number of defined Properties to be linked to an Identifier. It also allows for efficient storage of varying completeness in the scope of Properties known for an Identifier. 
+Identifiers have potentially many Properties, and the structure allows for an unspecified number of defined **Properties** to be linked to an Identifier. It also allows for efficient storage of varying completeness in the scope of Properties known for an Identifier. 
 
 The Properties are also linked, whenever possible, to well-known definitions - for example by schema.org or Wikidata.
 
@@ -44,6 +44,13 @@ The Properties are also linked, whenever possible, to well-known definitions - f
 - Identifiers are typically backed by a governing Authority that ensures uniqueness and resolvability.
 - Standards & Schemes define frameworks for ensuring Identifier integrity.
 - Some Identifiers are protocol-based, requiring specific technical infrastructure for resolution (e.g., Handle System, DOI).
+
+## Entities Represented by Identifiers
+
+Identifiers can be used to resolve to and represent one or more well-defined Entities, for example Research Outputs, Researchers, Samples, and many more. There are numerous ontologies and vocabularies for describing the Entities that are in scope in the research landscape, and it is ongoing work to reconcile these. At present, we work with a subset on the basis of need, in other words if an Entity is not referenced, we do not list it.
+
+The source of links between Entities and Identifiers are ‘Case Studies’, which include national PID policies and strategies, desktop research, one or two published community surveys, and AI-supported research. These Case Studies have additional attributes, in the sense that they may recommend, mandate, or anticipate the application of an Identifier for a specific Entity, and that their application scope is either national, regional, or global.
+
 
 ## Special Cases in Identifier Management
 
