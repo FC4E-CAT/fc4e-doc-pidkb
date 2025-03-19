@@ -7,6 +7,8 @@
 # Generated files
 .docusaurus
 .cache-loader
+static/graphql/schema.graphql
+docs/graphql-queries.md
 
 # Misc
 .DS_Store
