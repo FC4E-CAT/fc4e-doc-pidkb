@@ -38,6 +38,9 @@ jobs:
       - name: Install deps
         run: npm i
 
+      - name: Generate GraphQL Docs
+        run: npm run gen-graphql-docs
+
       - name: Build docs
         run: npm run build
 

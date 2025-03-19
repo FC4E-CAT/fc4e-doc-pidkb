@@ -1,0 +1,408 @@
+type Authority {
+  aUT: String
+  descAuthority: String
+  iDAUT: Int
+  labelAuthority: String
+  lastTouch: String
+  "Unique identifier for the entry"
+  lodAUT: String
+  populatedBy: String
+}
+
+type Identifier {
+  "A description for the identifier"
+  descIdentifier: String
+  iDIDN: Int
+  iDN: String
+  "A label for the identifier"
+  labelIdentifier: String
+  lastTouch: String
+  "Unique identifier for the entry"
+  lodIDN: String
+  lodIND_V: String
+  populatedBy: String
+  "ISO-8601"
+  startDate: DateTime
+}
+
+type MPA {
+  descMPA: String
+  iDMPA: Int
+  labelMPA: String
+  lastTouch: String
+  "Unique identifier for the entry"
+  lodMPA: String
+  mPA: String
+  populatedBy: String
+  "ISO-8601"
+  startDate: DateTime
+}
+
+type Manager {
+  certification: String
+  country: String
+  descManager: String
+  labelManager: String
+  lastTouch: String
+  lodMAN: String
+  lodMAN_V: String
+  mAN: String
+  populatedBy: String
+  "ISO-8601"
+  startDate: DateTime
+}
+
+type ManagerProvider {
+  id: ManagerProviderId
+  identifier: Identifier
+  lastTouch: String
+  lodRelation: String
+  manager: Manager
+  populatedBy: String
+  provider: Provider
+}
+
+type ManagerProviderId {
+  lodIDN: String
+  lodMAN: String
+  lodPRV: String
+}
+
+type PropertiesStackCombined {
+  labelProperty: String
+  lodIDN: String
+  lodRelation: String
+  value: String
+}
+
+type PropertiesStackDynamic {
+  labelProperty: String
+  lodIDN: String
+  lodRelation: String
+  value: String
+}
+
+type PropertiesStackStatic {
+  labelProperty: String
+  lodIDN: String
+  lodRelation: String
+  value: String
+}
+
+type Provider {
+  country: String
+  descProvider: String
+  iDPRV: Int
+  labelProvider: String
+  "ISO-8601"
+  lastTouch: Date
+  lodPRV: String
+  lodPRV_V: String
+  lodTPR: String
+  pRV: String
+  populatedBy: String
+  "ISO-8601"
+  startDate: DateTime
+}
+
+"Query root"
+type Query {
+  "Get All Manager Providers"
+  allManagerProviders: [ManagerProvider]
+  "Get All Authorities"
+  getAuthorities: [Authority]
+  "Fetches a paginated list of identifiers"
+  getAuthorityById(
+    "The id of the authority"
+    id: String
+  ): Authority
+  "Fetches a paginated list of identifiers"
+  getIdentifierById(
+    "The id of the identifier"
+    id: String
+  ): Identifier
+  "Get All Identifiers"
+  getIdentifiers: [Identifier]
+  "Fetches a paginated list of MPAs"
+  getMPAById(
+    "The id of the MPA"
+    id: String
+  ): MPA
+  "Get All MPA"
+  getMPAs: [MPA]
+  "Fetches a paginated list of managers"
+  getManagerById(
+    "The id of the manager"
+    id: String
+  ): Manager
+  "Get All Managers"
+  getManagers: [Manager]
+  "Fetches combined properties from the database."
+  getPropertiesStackCombined: [PropertiesStackCombined]
+  "Fetches a paginated list of identifiers"
+  getPropertiesStackCombinedById(
+    "The id of the authority"
+    id: String
+  ): PropertiesStackCombined
+  "Fetches a list of combined (static, dynamic) properties by label"
+  getPropertiesStackCombinedByLabel(
+    "The label of the Property"
+    label: String
+  ): [PropertiesStackCombined]
+  "Fetches a paginated list of the combined (static, dynamic) properties"
+  getPropertiesStackCombinedPaged(
+    "Indicates the page number. Page number must be >= 1."
+    Page: Int = 1,
+    "Page size must be between 1 and 100."
+    Size: Int = 10
+  ): [PropertiesStackCombined]
+  "Fetches properties from the database."
+  getPropertiesStackDynamic: [PropertiesStackDynamic]
+  "Fetches a list of dynamic properties by label"
+  getPropertiesStackDynamicByLabel(
+    "The label of the Property"
+    label: String
+  ): [PropertiesStackDynamic]
+  "Fetches a paginated list of dynamic properties"
+  getPropertiesStackDynamicPaged(
+    "Indicates the page number. Page number must be >= 1."
+    page: Int = 1,
+    "Page size must be between 1 and 100."
+    size: Int = 10
+  ): [PropertiesStackDynamic]
+  "Fetches static properties from the database."
+  getPropertiesStackStatic: [PropertiesStackStatic]
+  "Fetches a list of static properties by label"
+  getPropertiesStackStaticByLabel(
+    "The label of the Property"
+    label: String
+  ): [PropertiesStackStatic]
+  "Fetches a paginated list of static properties"
+  getPropertiesStackStaticPaged(
+    "Indicates the page number. Page number must be >= 1."
+    Page: Int = 1,
+    "Page size must be between 1 and 100."
+    Size: Int = 10
+  ): [PropertiesStackStatic]
+  "Fetches a paginated list of providers"
+  getProviderById(
+    "The id of the provider"
+    id: String
+  ): Provider
+  "Get All Providers"
+  getProviders: [Provider]
+  "Fetches resolved identifier authority "
+  getResolvedIdentifierAuthorities: [ResolvedIdentifierAuthority]
+  "Fetches a list of resolved identifier authorities by label"
+  getResolvedIdentifierAuthoritiesByLabel(
+    "The label of the actor: Authority"
+    label: String
+  ): [ResolvedIdentifierAuthority]
+  "Fetches a paginated list of resolved identifier authorities"
+  getResolvedIdentifierAuthoritiesPaged(
+    "Indicates the page number. Page number must be >= 1."
+    Page: Int = 1,
+    "Page size must be between 1 and 100."
+    Size: Int = 10
+  ): [ResolvedIdentifierAuthority]
+  "Fetch all resolved identifier mpas"
+  getResolvedIdentifierMPAs: [ResolvedIdentifierMPA]
+  "Fetches a list of resolved identifier MPAs by label"
+  getResolvedIdentifierMPAsByLabel(
+    "The label of the MPA (Multi-Provider-Agency)"
+    label: String
+  ): [ResolvedIdentifierMPA]
+  "Fetches a paginated list of resolved identifier MPAs"
+  getResolvedIdentifierMPAsPaged(
+    "Indicates the page number. Page number must be >= 1."
+    Page: Int = 1,
+    "Page size must be between 1 and 100."
+    Size: Int = 10
+  ): [ResolvedIdentifierMPA]
+  "Fetch all resolved identifier provider"
+  getResolvedIdentifierProviders: [ResolvedIdentifierProvider]
+  "Fetches a list of resolved identifier providers by label"
+  getResolvedIdentifierProvidersByLabel(
+    "The label of the actor: Provider"
+    label: String
+  ): [ResolvedIdentifierProvider]
+  "Fetches a paginated list of resolved identifier providers"
+  getResolvedIdentifierProvidersPaged(
+    "Indicates the page number. Page number must be >= 1."
+    Page: Int = 1,
+    "Page size must be between 1 and 100."
+    Size: Int = 10
+  ): [ResolvedIdentifierProvider]
+  "Fetch all resolved identifier schemes"
+  getResolvedIdentifierSchemes: [ResolvedIdentifierScheme]
+  "Fetches a list of resolved identifier scheme by label"
+  getResolvedIdentifierSchemesByLabel(
+    "The label of the actor: Scheme"
+    label: String
+  ): [ResolvedIdentifierScheme]
+  "Fetches a paginated list of resolved identifier schemes"
+  getResolvedIdentifierSchemesPaged(
+    "Indicates the page number. Page number must be >= 1."
+    Page: Int = 1,
+    "Page size must be between 1 and 100."
+    Size: Int = 10
+  ): [ResolvedIdentifierScheme]
+  "Fetches resolved identifier stack "
+  getResolvedIdentifierStack: [ResolvedIdentifierStack]
+  "Fetches a list of resolved identifier stacks by Actor"
+  getResolvedIdentifierStackByActor(
+    "The name of the actor"
+    actor: String
+  ): [ResolvedIdentifierStack]
+  "Fetches a paginated list of identifiers"
+  getResolvedIdentifierStackById(
+    "The id of the authority"
+    id: String
+  ): ResolvedIdentifierStack
+  "Fetches a list of resolved identifier stacks by Label"
+  getResolvedIdentifierStackByLabel(
+    "The label of the actor"
+    label: String
+  ): [ResolvedIdentifierStack]
+  "Fetches a list of resolved identifier stacks by Identifiers Label"
+  getResolvedIdentifierStackByLabelIdentifier(
+    "The label of the Identifier"
+    label: String
+  ): [ResolvedIdentifierStack]
+  "Fetches a paginated list of resolved identifier Stack"
+  getResolvedIdentifierStackPaged(
+    "Indicates the page number. Page number must be >= 1."
+    Page: Int = 1,
+    "Page size must be between 1 and 100."
+    Size: Int = 10
+  ): [ResolvedIdentifierStack]
+  "Fetches resolved identifier standard "
+  getResolvedIdentifierStandards: [ResolvedIdentifierStandard]
+  "Fetches resolved identifier standard from the database by label."
+  getResolvedIdentifierStandardsByLabel(
+    "The label of the actor: Standard"
+    label: String
+  ): [ResolvedIdentifierStandard]
+  "Fetches a paginated list of resolved identifier standard"
+  getResolvedIdentifierStandardsPaged(
+    "Indicates the page number. Page number must be >= 1."
+    Page: Int = 1,
+    "Page size must be between 1 and 100."
+    Size: Int = 10
+  ): [ResolvedIdentifierStandard]
+  "Fetches a paginated list of schemes"
+  getSchemeById(
+    "The id of the scheme"
+    id: String
+  ): Scheme
+  "Get All Schemes"
+  getSchemes: [Scheme]
+  "Fetches a paginated list of identifiers"
+  getStandardById(
+    "The id of the standard"
+    id: String
+  ): Standard
+  "Get All Standards"
+  getStandards: [Standard]
+  "Fetches a paginated list of identifiers"
+  identifiers(
+    "Page number to fetch"
+    page: Int = 1,
+    "Number of items per page"
+    size: Int = 10
+  ): [Identifier]
+  "Get All Managers"
+  managers: [Manager]
+  "Fetches a list of properties stacks combined by search"
+  searchPropertiesStackCombinedStack(
+    "Search by lodIDN, labelIdentifier, value"
+    search: String
+  ): [PropertiesStackCombined]
+  "Fetches a list of resolved identifier stacks by search"
+  searchResolvedIdentifierStack(
+    "Search by actor, labelIdentifier, label"
+    search: String
+  ): [ResolvedIdentifierStack]
+}
+
+type ResolvedIdentifierAuthority {
+  actor: String
+  label: String
+  labelIdentifier: String
+  lod: String
+  lodAct: String
+  lodIDN: String
+}
+
+type ResolvedIdentifierMPA {
+  actor: String
+  labelIdentifier: String
+  labelMPA: String
+  lodAct: String
+  lodIdn: String
+  lodMPA: String
+}
+
+type ResolvedIdentifierProvider {
+  actor: String
+  labelIdentifier: String
+  labelProvider: String
+  lodAct: String
+  lodIdn: String
+  lodPrv: String
+}
+
+type ResolvedIdentifierScheme {
+  actor: String
+  label: String
+  labelIdentifier: String
+  lod: String
+  lodAct: String
+  lodIDN: String
+}
+
+type ResolvedIdentifierStack {
+  actor: String
+  label: String
+  labelIdentifier: String
+  lod: String
+  lodAct: String
+  lodIDN: String
+}
+
+type ResolvedIdentifierStandard {
+  actor: String
+  label: String
+  labelIdentifier: String
+  lod: String
+  lodAct: String
+  lodIDN: String
+}
+
+type Scheme {
+  descScheme: String
+  iDSCH: Int
+  labelScheme: String
+  lastTouch: String
+  lodSCH: String
+  lodSCH_V: String
+  lodTSC: String
+  populatedBy: String
+  sCH: String
+  "ISO-8601"
+  startDate: DateTime
+}
+
+type Standard {
+  descStandard: String
+  iDSTD: Int
+  labelStandard: String
+  lastTouch: String
+  lodSTD: String
+  lodSTD_V: String
+  lodTST: String
+  populatedBy: String
+  sTD: String
+  "ISO-8601"
+  startDate: DateTime
+}
