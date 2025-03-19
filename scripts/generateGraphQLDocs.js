@@ -98,10 +98,14 @@ query {
 function generateQueryVariables(parameters) {
     let variables = {};
     parameters.forEach(param => {
-        variables[param.name] = param.defaultValue ??
+        let value = param.defaultValue ??
             (param.type.includes("Int") ? 1 :
                 param.type.includes("Boolean") ? true :
                     param.name.toLowerCase() === "id" ? "pid_graph:Sample_Value" : "sample_value");
+
+        if (typeof value === 'string') { value = value.replace(/,+$/, '').trim(); }
+        variables[param.name] = value;
+
     });
     return variables;
 }
