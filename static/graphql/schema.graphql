@@ -107,61 +107,89 @@ type Provider {
 
 "Query root"
 type Query {
-  "Get All Manager Providers"
+  "Fetches All Manager Providers"
   allManagerProviders: [ManagerProvider]
-  "Get All Authorities"
+  "Fetches All Authorities"
   getAuthorities: [Authority]
-  "Fetches a paginated list of identifiers"
+  "Fetches an Authority by Id"
   getAuthorityById(
     "The id of the authority"
-    id: String
+    id: String = "pid_graph:00C7B7CF"
   ): Authority
-  "Fetches a paginated list of identifiers"
+  "Fetches a paginated list of Authorities"
+  getAuthorityByPage(
+    "Indicates the page number. Page number must be >= 1."
+    page: Int = 1,
+    "Page size must be between 1 and 100."
+    size: Int = 10
+  ): [Authority]
+  "Fetches an Identifier by Id"
   getIdentifierById(
     "The id of the identifier"
-    id: String
+    id: String = "pid_graph:03A715EA1"
   ): Identifier
-  "Get All Identifiers"
+  "Fetches All Identifiers"
   getIdentifiers: [Identifier]
-  "Fetches a paginated list of MPAs"
+  "Fetches a paginated list of identifiers"
+  getIdentifiersByPage(
+    "Indicates the page number. Page number must be >= 1."
+    page: Int = 1,
+    "Page size must be between 1 and 100."
+    size: Int = 10
+  ): [Identifier]
+  "Fetches a MPA by Id"
   getMPAById(
     "The id of the MPA"
-    id: String
+    id: String = "pid_graph:70E2C260"
   ): MPA
   "Get All MPA"
   getMPAs: [MPA]
-  "Fetches a paginated list of managers"
+  "Fetches a paginated list of MPA"
+  getMPAsByPage(
+    "Indicates the page number. Page number must be >= 1."
+    page: Int = 1,
+    "Page size must be between 1 and 100."
+    size: Int = 10
+  ): [MPA]
+  "Fetches a Manager by Id"
   getManagerById(
     "The id of the manager"
-    id: String
+    id: String = "pid_graph:2FBC5B5F"
   ): Manager
+  "Fetches a paginated list of Managers"
+  getManagerByPage(
+    "Indicates the page number. Page number must be >= 1."
+    page: Int = 1,
+    "Page size must be between 1 and 100."
+    size: Int = 10
+  ): [Manager]
   "Get All Managers"
   getManagers: [Manager]
   "Fetches combined properties from the database."
   getPropertiesStackCombined: [PropertiesStackCombined]
-  "Fetches a paginated list of identifiers"
+  "Fetches a Property Stack Combination by Id"
   getPropertiesStackCombinedById(
-    "The id of the authority"
-    id: String
+    "The id of the identifier"
+    id: String = "pid_graph:D9D0AD30"
   ): PropertiesStackCombined
   "Fetches a list of combined (static, dynamic) properties by label"
   getPropertiesStackCombinedByLabel(
     "The label of the Property"
-    label: String
+    label: String = "Status"
   ): [PropertiesStackCombined]
   "Fetches a paginated list of the combined (static, dynamic) properties"
   getPropertiesStackCombinedPaged(
     "Indicates the page number. Page number must be >= 1."
-    Page: Int = 1,
+    page: Int = 1,
     "Page size must be between 1 and 100."
-    Size: Int = 10
+    size: Int = 10
   ): [PropertiesStackCombined]
   "Fetches properties from the database."
   getPropertiesStackDynamic: [PropertiesStackDynamic]
   "Fetches a list of dynamic properties by label"
   getPropertiesStackDynamicByLabel(
     "The label of the Property"
-    label: String
+    label: String = "Managers"
   ): [PropertiesStackDynamic]
   "Fetches a paginated list of dynamic properties"
   getPropertiesStackDynamicPaged(
@@ -175,153 +203,160 @@ type Query {
   "Fetches a list of static properties by label"
   getPropertiesStackStaticByLabel(
     "The label of the Property"
-    label: String
+    label: String = "Resolution Topology"
   ): [PropertiesStackStatic]
   "Fetches a paginated list of static properties"
   getPropertiesStackStaticPaged(
     "Indicates the page number. Page number must be >= 1."
-    Page: Int = 1,
+    page: Int = 1,
     "Page size must be between 1 and 100."
-    Size: Int = 10
+    size: Int = 10
   ): [PropertiesStackStatic]
-  "Fetches a paginated list of providers"
+  "Fetches a Provider by Id"
   getProviderById(
     "The id of the provider"
-    id: String
+    id: String = "pid_graph:3C391CE0"
   ): Provider
   "Get All Providers"
   getProviders: [Provider]
+  "Fetches a paginated list of identifiers"
+  getProvidersByPage(
+    "Indicates the page number. Page number must be >= 1."
+    page: Int = 1,
+    "Page size must be between 1 and 100."
+    size: Int = 10
+  ): [Provider]
   "Fetches resolved identifier authority "
   getResolvedIdentifierAuthorities: [ResolvedIdentifierAuthority]
   "Fetches a list of resolved identifier authorities by label"
   getResolvedIdentifierAuthoritiesByLabel(
-    "The label of the actor: Authority"
-    label: String
+    "The label of the Authority"
+    label: String = "DONA"
   ): [ResolvedIdentifierAuthority]
   "Fetches a paginated list of resolved identifier authorities"
   getResolvedIdentifierAuthoritiesPaged(
     "Indicates the page number. Page number must be >= 1."
-    Page: Int = 1,
+    page: Int = 1,
     "Page size must be between 1 and 100."
-    Size: Int = 10
+    size: Int = 10
   ): [ResolvedIdentifierAuthority]
   "Fetch all resolved identifier mpas"
   getResolvedIdentifierMPAs: [ResolvedIdentifierMPA]
   "Fetches a list of resolved identifier MPAs by label"
   getResolvedIdentifierMPAsByLabel(
-    "The label of the MPA (Multi-Provider-Agency)"
-    label: String
+    "The label of the Resolved Identifier"
+    label: String = "ORCID"
   ): [ResolvedIdentifierMPA]
   "Fetches a paginated list of resolved identifier MPAs"
   getResolvedIdentifierMPAsPaged(
     "Indicates the page number. Page number must be >= 1."
-    Page: Int = 1,
+    page: Int = 1,
     "Page size must be between 1 and 100."
-    Size: Int = 10
+    size: Int = 10
   ): [ResolvedIdentifierMPA]
   "Fetch all resolved identifier provider"
   getResolvedIdentifierProviders: [ResolvedIdentifierProvider]
   "Fetches a list of resolved identifier providers by label"
   getResolvedIdentifierProvidersByLabel(
-    "The label of the actor: Provider"
-    label: String
+    "The label of the provider"
+    label: String = "arXiv.org"
   ): [ResolvedIdentifierProvider]
   "Fetches a paginated list of resolved identifier providers"
   getResolvedIdentifierProvidersPaged(
     "Indicates the page number. Page number must be >= 1."
-    Page: Int = 1,
+    page: Int = 1,
     "Page size must be between 1 and 100."
-    Size: Int = 10
+    size: Int = 10
   ): [ResolvedIdentifierProvider]
   "Fetch all resolved identifier schemes"
   getResolvedIdentifierSchemes: [ResolvedIdentifierScheme]
   "Fetches a list of resolved identifier scheme by label"
   getResolvedIdentifierSchemesByLabel(
-    "The label of the actor: Scheme"
-    label: String
+    "The label of the Scheme"
+    label: String = "URN:NBN"
   ): [ResolvedIdentifierScheme]
   "Fetches a paginated list of resolved identifier schemes"
   getResolvedIdentifierSchemesPaged(
     "Indicates the page number. Page number must be >= 1."
-    Page: Int = 1,
+    page: Int = 1,
     "Page size must be between 1 and 100."
-    Size: Int = 10
+    size: Int = 10
   ): [ResolvedIdentifierScheme]
   "Fetches resolved identifier stack "
   getResolvedIdentifierStack: [ResolvedIdentifierStack]
   "Fetches a list of resolved identifier stacks by Actor"
   getResolvedIdentifierStackByActor(
     "The name of the actor"
-    actor: String
+    actor: String = "Authority"
   ): [ResolvedIdentifierStack]
-  "Fetches a paginated list of identifiers"
+  "Fetches a Resolved Identifier Stack by Id"
   getResolvedIdentifierStackById(
-    "The id of the authority"
-    id: String
+    "The id of the Identifier"
+    id: String = "pid_graph:998B7874"
   ): ResolvedIdentifierStack
   "Fetches a list of resolved identifier stacks by Label"
   getResolvedIdentifierStackByLabel(
-    "The label of the actor"
-    label: String
+    "The label of the identifier"
+    label: String = "DONA"
   ): [ResolvedIdentifierStack]
   "Fetches a list of resolved identifier stacks by Identifiers Label"
   getResolvedIdentifierStackByLabelIdentifier(
     "The label of the Identifier"
-    label: String
+    label: String = "DOI"
   ): [ResolvedIdentifierStack]
   "Fetches a paginated list of resolved identifier Stack"
   getResolvedIdentifierStackPaged(
     "Indicates the page number. Page number must be >= 1."
-    Page: Int = 1,
+    page: Int = 1,
     "Page size must be between 1 and 100."
-    Size: Int = 10
+    size: Int = 10
   ): [ResolvedIdentifierStack]
   "Fetches resolved identifier standard "
   getResolvedIdentifierStandards: [ResolvedIdentifierStandard]
   "Fetches resolved identifier standard from the database by label."
   getResolvedIdentifierStandardsByLabel(
-    "The label of the actor: Standard"
-    label: String
+    "The label of the Standard"
+    label: String = "Bibcode Published Schema"
   ): [ResolvedIdentifierStandard]
   "Fetches a paginated list of resolved identifier standard"
   getResolvedIdentifierStandardsPaged(
     "Indicates the page number. Page number must be >= 1."
-    Page: Int = 1,
+    page: Int = 1,
     "Page size must be between 1 and 100."
-    Size: Int = 10
+    size: Int = 10
   ): [ResolvedIdentifierStandard]
-  "Fetches a paginated list of schemes"
+  "Fetches a Scheme by Id"
   getSchemeById(
     "The id of the scheme"
-    id: String
+    id: String = "pid_graph:466E3789"
   ): Scheme
   "Get All Schemes"
   getSchemes: [Scheme]
-  "Fetches a paginated list of identifiers"
+  "Fetches a Standard by Id"
   getStandardById(
     "The id of the standard"
-    id: String
+    id: String = "pid_graph:FCDAACDB"
   ): Standard
+  "Fetches a paginated list of Standards"
+  getStandardByPage(
+    "Indicates the page number. Page number must be >= 1."
+    page: Int = 1,
+    "Page size must be between 1 and 100."
+    size: Int = 10
+  ): [Standard]
   "Get All Standards"
   getStandards: [Standard]
-  "Fetches a paginated list of identifiers"
-  identifiers(
-    "Page number to fetch"
-    page: Int = 1,
-    "Number of items per page"
-    size: Int = 10
-  ): [Identifier]
-  "Get All Managers"
+  "Fetches All Managers"
   managers: [Manager]
   "Fetches a list of properties stacks combined by search"
   searchPropertiesStackCombinedStack(
-    "Search by lodIDN, labelIdentifier, value"
-    search: String
+    "Search by labelProperty, lodIDN, labelIdentifier, value"
+    search: String = "hasProperty"
   ): [PropertiesStackCombined]
   "Fetches a list of resolved identifier stacks by search"
   searchResolvedIdentifierStack(
     "Search by actor, labelIdentifier, label"
-    search: String
+    search: String = "MPA"
   ): [ResolvedIdentifierStack]
 }
 

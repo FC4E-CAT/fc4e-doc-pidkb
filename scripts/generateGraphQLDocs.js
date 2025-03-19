@@ -1,6 +1,11 @@
 const fs = require("fs");
 
-console.log(`\n🚀 Using GraphQL API: https://kb.devel.cat.argo.grnet.gr/graphql}\n`);
+// DEFAULTS
+const OUTPUT = process.env.GEN_GRAPHQL_DOCS_OUTPUT || "./docs/graphql-queries.md";
+const SCHEMA = process.env.GEN_GRAPHQL_DOCS_SCHEMA || "./static/graphql/schema.graphql";
+const ENDPOINT = process.env.GEN_GRAPHQL_DOCS_ENDPOINT || "https://kb.devel.cat.argo.grnet.gr/graphql";
+const LIMIT = process.env.GEN_GRAPHQL_DOCS_LIMIT || 3;
+
 
 // Extract Types from Schema
 function extractTypes(schema) {
@@ -62,6 +67,8 @@ async function fetchExampleResponse(query, typeDefinitions) {
     let variables = generateQueryVariables(query.parameters);
     let subfields = typeDefinitions[query.returnType] || [];
 
+
+
     let queryText = `
 query {
   ${query.name}${query.parameters.length ? `(${query.parameters.map(p =>
@@ -71,14 +78,16 @@ query {
 }`.trim();
 
     try {
-        const response = await fetch("https://kb.devel.cat.argo.grnet.gr/graphql", {
+        const response = await fetch(ENDPOINT, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ query: queryText }),
         });
 
+
+
         const json = await response.json();
-        return json.data?.[query.name] ?? {};
+        return json
     } catch (error) {
         console.error(`❌ Error fetching example for ${query.name}:`, error);
         return {};
@@ -99,7 +108,8 @@ function generateQueryVariables(parameters) {
 
 // Generate MarkDown
 async function generateMarkdown() {
-    const schema = fs.readFileSync("./static/graphql/schema.graphql", "utf8");
+    const schema = fs.readFileSync(SCHEMA, "utf8");
+    console.log(`📐 GraphQL Schema used: \x1b[34m${SCHEMA}\x1b[0m \n`);
     const typeDefinitions = extractTypes(schema);
     const queries = extractQueries(schema);
 
@@ -119,13 +129,15 @@ This section describes the available **GraphQL API queries**, their usage, requi
     markdownContent += `|------------|-------------|\n`;
 
     queries.forEach(({ name, description }) => {
-        markdownContent += `| **\`${name}\`** | ${description || "_No description available_"} |\n`;
+        markdownContent += `| **\[${name}](#post-${name.toLowerCase()})\** | ${description || "_No description available_"} |\n`;
     });
 
     markdownContent += `\n---\n`;
-
+    console.log(`🚀 Examples from GraphQL API: \x1b[32m\x1b[4m${ENDPOINT}\x1b[0m \n`);
+    console.log(`✂️ Trim example results to: \x1b[35m${LIMIT}\x1b[0m \n`);
     for (const query of queries) {
-        query.exampleResponse = await fetchExampleResponse(query, typeDefinitions);
+
+        query.exampleRes = await fetchExampleResponse(query, typeDefinitions);
 
         let formattedParams = query.parameters.length
             ? query.parameters.map((p) => `${p.name}: ${p.type}`).join(", ")
@@ -133,7 +145,13 @@ This section describes the available **GraphQL API queries**, their usage, requi
 
         let subfields = typeDefinitions[query.returnType]?.map(f => `    ${f}`).join("\n") || "";
 
-        let responseExample = JSON.stringify(query.exampleResponse, null, 2);
+
+
+        // check example array and if its too big trim it
+        if (query.exampleRes?.data && query.exampleRes.data[query.name] instanceof Array) {
+            query.exampleRes.data[query.name] = query.exampleRes.data[query.name].filter((item, index) => index < LIMIT);
+        }
+
 
         markdownContent += `\n## **[POST]: ${query.name}**\n`;
         markdownContent += `#### Description\n> 📌 ${query.description || `Fetches a \`${query.returnType}\`.`}\n\n`;
@@ -145,12 +163,14 @@ This section describes the available **GraphQL API queries**, their usage, requi
 
         markdownContent += `### **Response**\n`;
         markdownContent += `#### **Headers**\n\`\`\`\nStatus: 200 OK\n\`\`\`\n\n`;
-        markdownContent += `#### **Response body:**\n\n\`\`\`json\n${responseExample}\n\`\`\`\n\n`;
+        markdownContent += query.exampleRes.data  
+                            ? `#### **Response body:**\n\n\`\`\`json\n${JSON.stringify(query.exampleRes, null, 4)}\n\`\`\`\n\n`
+                            : "#### **Response body:**\n\n\`\`\`json\n Example not provided \n\`\`\`\n\n";
         markdownContent += "---\n";
     }
 
-    fs.writeFileSync("./docs/graphql-queries.md", markdownContent, "utf8");
-    console.log(`✅ GraphQL API Documentation updated at: ./docs/graphql-queries.md`);
+    fs.writeFileSync(OUTPUT, markdownContent, "utf8");
+    console.log(`✅ GraphQL API Documentation updated at: \x1b[34m${OUTPUT}\x1b[0m \n`);
 }
 
 // Run Markdown Generation
