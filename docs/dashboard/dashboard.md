@@ -10,6 +10,7 @@ The Dashboard/ Search and Discovery feature in the Compliance Assessment Toolkit
 You do not have to be logged in to make use of the Dashboard/ Search and Discovery service.
 
 import dashboard from '/img/dashboard/dashboard.png';
+
 <img src={dashboard} alt="Dashboard Search and Discovery" style={{width: 600}} />
 
 ## Dashboard/ Search and Discovery Are Interlinked
@@ -23,6 +24,8 @@ The selection actions in the Dashboard are also shared to the Search and Discove
 The current scope of selected facets are shown in the top left of these pages as ‘Active Filters’. 
 
 import dashboard_interlinked from '/img/dashboard/dashboard_interlinked.png';
+
 <img src={dashboard_interlinked} alt="Dashboard Search and Discovery" style={{width: 600}} />
+
 
 
