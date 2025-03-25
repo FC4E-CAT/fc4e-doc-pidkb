@@ -1,359 +1,434 @@
 type Authority {
-  aUT: String
+  "The description of the Authority"
   descAuthority: String
-  iDAUT: Int
+  "The identifier of the Authority"
+  idAuthority: Int
+  "The label of the Authority"
   labelAuthority: String
+  "lastTouch"
   lastTouch: String
-  "Unique identifier for the entry"
+  "Unique identifier for the Authority"
   lodAUT: String
+  "The name of the Authority"
+  nameAuthority: String
+  "populatedBy"
   populatedBy: String
 }
 
 type Identifier {
-  "A description for the identifier"
+  "The description for the identifier"
   descIdentifier: String
-  iDIDN: Int
-  iDN: String
-  "A label for the identifier"
+  "The identifier of the Identifier"
+  idIdentifier: Int
+  "The label for the Identifier"
   labelIdentifier: String
+  "lastTouch"
   lastTouch: String
   "Unique identifier for the entry"
   lodIDN: String
-  lodIND_V: String
+  "The name of the Identifier"
+  nameIdentifier: String
+  "populatedBy"
   populatedBy: String
-  "ISO-8601"
+  "startDate (ISO-8601)"
   startDate: DateTime
+  "The version of the Identifier"
+  version: String
 }
 
 type MPA {
+  "The description of the Multi-Provider-Agency (MPA)"
   descMPA: String
-  iDMPA: Int
+  "The identifier code"
+  idMPA: Int
+  "The label of the Multi-Provider-Agency (MPA)"
   labelMPA: String
+  "lastTouch"
   lastTouch: String
-  "Unique identifier for the entry"
+  "Unique identifier for the Multi-Provider-Agency (MPA)"
   lodMPA: String
-  mPA: String
+  "The name of the Multi-Provider-Agency (MPA)"
+  nameMPA: String
+  "populatedBy"
   populatedBy: String
-  "ISO-8601"
+  "startDate (ISO-8601)"
   startDate: DateTime
 }
 
 type Manager {
+  "The certification of the Manager"
   certification: String
+  "The country of the Manager"
   country: String
+  "The description of the Manager"
   descManager: String
+  "The label of the Manager"
   labelManager: String
+  "lastTouch"
   lastTouch: String
+  "Unique identifier for the Manager"
   lodMAN: String
-  lodMAN_V: String
-  mAN: String
+  "The name of the Manager"
+  nameManager: String
+  "populatedBy"
   populatedBy: String
-  "ISO-8601"
+  "startDate (ISO-8601)"
   startDate: DateTime
+  "The version of the Manager"
+  version: String
 }
 
 type ManagerProvider {
+  "The combined ID of the Manager-Provider relation"
   id: ManagerProviderId
+  "The Identifier"
   identifier: Identifier
+  "lastTouch"
   lastTouch: String
+  "The relation between Manager, Provider and Identifier"
   lodRelation: String
+  "The Manager"
   manager: Manager
+  "populatedBy"
   populatedBy: String
+  "The Provider"
   provider: Provider
 }
 
 type ManagerProviderId {
+  "The unique identifier of Identifier"
   lodIDN: String
+  "The unique identifier of Manager"
   lodMAN: String
+  "The unique identifier of Provider"
   lodPRV: String
 }
 
 type PropertiesStackCombined {
+  "The description of the Property"
   labelProperty: String
+  "The unique identifier of the Identifier"
   lodIDN: String
+  "The relation between Manager, Propertie and Identifier"
   lodRelation: String
+  "The value"
   value: String
 }
 
 type PropertiesStackDynamic {
+  "The label of the Property"
   labelProperty: String
+  "The unique identifier of the Identifier"
   lodIDN: String
+  "The relation between the Identifier and Property"
   lodRelation: String
+  "The value"
   value: String
 }
 
 type PropertiesStackStatic {
+  "The label of the Property"
   labelProperty: String
+  "The unique identifier of the Identifier"
   lodIDN: String
+  "The relation between Identifier and Property"
   lodRelation: String
+  "The value"
   value: String
 }
 
 type Provider {
+  "The country of the Provider"
   country: String
+  "The description of the Provider"
   descProvider: String
-  iDPRV: Int
+  idPRV: Int
+  "The label of the Provider"
   labelProvider: String
-  "ISO-8601"
+  "lastTouch (ISO-8601)"
   lastTouch: Date
+  "Unique identifier for the Provider"
   lodPRV: String
-  lodPRV_V: String
+  "The unique identifier of the Type Provider"
   lodTPR: String
-  pRV: String
+  "The identifier of the Provider"
+  nameProvider: String
+  "populatedBy"
   populatedBy: String
-  "ISO-8601"
+  "startDate (ISO-8601)"
   startDate: DateTime
+  "The version of the Provider"
+  version: String
 }
 
 "Query root"
 type Query {
-  "Fetches All Manager Providers"
-  allManagerProviders: [ManagerProvider]
-  "Fetches All Authorities"
+  "[relation] Fetches All Manager Providers"
+  getAllManagerProviders: [ManagerProvider]
+  "[relation] Fetches a paginated list of Manager Providers"
+  getAllManagerProvidersPaged(
+    "Indicates the page number. Page number must be >= 1."
+    page: Int = 1,
+    "Page size must be between 1 and 100."
+    size: Int = 10
+  ): [ManagerProvider]
+  "[entity] Fetches All Authorities"
   getAuthorities: [Authority]
-  "Fetches an Authority by Id"
+  "[entity] Fetches an Authority by Id"
   getAuthorityById(
     "The id of the authority"
     id: String = "pid_graph:00C7B7CF"
   ): Authority
-  "Fetches a paginated list of Authorities"
+  "[entity] Fetches a paginated list of Authorities"
   getAuthorityByPage(
     "Indicates the page number. Page number must be >= 1."
     page: Int = 1,
     "Page size must be between 1 and 100."
     size: Int = 10
   ): [Authority]
-  "Fetches an Identifier by Id"
+  "[entity] Fetches an Identifier by Id"
   getIdentifierById(
     "The id of the identifier"
     id: String = "pid_graph:03A715EA1"
   ): Identifier
-  "Fetches All Identifiers"
+  "[entity] Fetches All Identifiers"
   getIdentifiers: [Identifier]
-  "Fetches a paginated list of identifiers"
+  "[entity] Fetches a paginated list of identifiers"
   getIdentifiersByPage(
     "Indicates the page number. Page number must be >= 1."
     page: Int = 1,
     "Page size must be between 1 and 100."
     size: Int = 10
   ): [Identifier]
-  "Fetches a MPA by Id"
+  "[entity] Fetches a MPA by Id"
   getMPAById(
     "The id of the MPA"
     id: String = "pid_graph:70E2C260"
   ): MPA
-  "Get All MPA"
+  "[entity] Get All MPA"
   getMPAs: [MPA]
-  "Fetches a paginated list of MPA"
+  "[entity] Fetches a paginated list of MPA"
   getMPAsByPage(
     "Indicates the page number. Page number must be >= 1."
     page: Int = 1,
     "Page size must be between 1 and 100."
     size: Int = 10
   ): [MPA]
-  "Fetches a Manager by Id"
+  "[entity] Fetches a Manager by Id"
   getManagerById(
     "The id of the manager"
     id: String = "pid_graph:2FBC5B5F"
   ): Manager
-  "Fetches a paginated list of Managers"
+  "[entity] Fetches a paginated list of Managers"
   getManagerByPage(
     "Indicates the page number. Page number must be >= 1."
     page: Int = 1,
     "Page size must be between 1 and 100."
     size: Int = 10
   ): [Manager]
-  "Get All Managers"
+  "[entity] Get All Managers"
   getManagers: [Manager]
-  "Fetches combined properties from the database."
+  "[view] Fetches combined properties from the database."
   getPropertiesStackCombined: [PropertiesStackCombined]
-  "Fetches a Property Stack Combination by Id"
+  "[view] Fetches a Property Stack Combination by Id"
   getPropertiesStackCombinedById(
     "The id of the identifier"
     id: String = "pid_graph:D9D0AD30"
   ): PropertiesStackCombined
-  "Fetches a list of combined (static, dynamic) properties by label"
+  "[view] Fetches a list of combined (static, dynamic) properties by label"
   getPropertiesStackCombinedByLabel(
     "The label of the Property"
     label: String = "Status"
   ): [PropertiesStackCombined]
-  "Fetches a paginated list of the combined (static, dynamic) properties"
+  "[view] Fetches a paginated list of the combined (static, dynamic) properties"
   getPropertiesStackCombinedPaged(
     "Indicates the page number. Page number must be >= 1."
     page: Int = 1,
     "Page size must be between 1 and 100."
     size: Int = 10
   ): [PropertiesStackCombined]
-  "Fetches properties from the database."
+  "[view] Fetches properties from the database."
   getPropertiesStackDynamic: [PropertiesStackDynamic]
-  "Fetches a list of dynamic properties by label"
+  "[view] Fetches a list of dynamic properties by label"
   getPropertiesStackDynamicByLabel(
     "The label of the Property"
     label: String = "Managers"
   ): [PropertiesStackDynamic]
-  "Fetches a paginated list of dynamic properties"
+  "[view] Fetches a paginated list of dynamic properties"
   getPropertiesStackDynamicPaged(
     "Indicates the page number. Page number must be >= 1."
     page: Int = 1,
     "Page size must be between 1 and 100."
     size: Int = 10
   ): [PropertiesStackDynamic]
-  "Fetches static properties from the database."
+  "[view] Fetches static properties from the database."
   getPropertiesStackStatic: [PropertiesStackStatic]
-  "Fetches a list of static properties by label"
+  "[view] Fetches a list of static properties by label"
   getPropertiesStackStaticByLabel(
     "The label of the Property"
     label: String = "Resolution Topology"
   ): [PropertiesStackStatic]
-  "Fetches a paginated list of static properties"
+  "[view] Fetches a paginated list of static properties"
   getPropertiesStackStaticPaged(
     "Indicates the page number. Page number must be >= 1."
     page: Int = 1,
     "Page size must be between 1 and 100."
     size: Int = 10
   ): [PropertiesStackStatic]
-  "Fetches a Provider by Id"
+  "[entity] Fetches a Provider by Id"
   getProviderById(
     "The id of the provider"
     id: String = "pid_graph:3C391CE0"
   ): Provider
-  "Get All Providers"
+  "[entity] Get All Providers"
   getProviders: [Provider]
-  "Fetches a paginated list of identifiers"
+  "[entity] Fetches a paginated list of identifiers"
   getProvidersByPage(
     "Indicates the page number. Page number must be >= 1."
     page: Int = 1,
     "Page size must be between 1 and 100."
     size: Int = 10
   ): [Provider]
-  "Fetches resolved identifier authority "
+  "[view] Fetches resolved identifier authority "
   getResolvedIdentifierAuthorities: [ResolvedIdentifierAuthority]
-  "Fetches a list of resolved identifier authorities by label"
+  "[view] Fetches a list of resolved identifier authorities by label"
   getResolvedIdentifierAuthoritiesByLabel(
     "The label of the Authority"
     label: String = "DONA"
   ): [ResolvedIdentifierAuthority]
-  "Fetches a paginated list of resolved identifier authorities"
+  "[view] Fetches a paginated list of resolved identifier authorities"
   getResolvedIdentifierAuthoritiesPaged(
     "Indicates the page number. Page number must be >= 1."
     page: Int = 1,
     "Page size must be between 1 and 100."
     size: Int = 10
   ): [ResolvedIdentifierAuthority]
-  "Fetch all resolved identifier mpas"
+  "[view] Fetch all resolved identifier mpas"
   getResolvedIdentifierMPAs: [ResolvedIdentifierMPA]
-  "Fetches a list of resolved identifier MPAs by label"
+  "[view] Fetches a list of resolved identifier MPAs by label"
   getResolvedIdentifierMPAsByLabel(
     "The label of the Resolved Identifier"
     label: String = "ORCID"
   ): [ResolvedIdentifierMPA]
-  "Fetches a paginated list of resolved identifier MPAs"
+  "[view] Fetches a paginated list of resolved identifier MPAs"
   getResolvedIdentifierMPAsPaged(
     "Indicates the page number. Page number must be >= 1."
     page: Int = 1,
     "Page size must be between 1 and 100."
     size: Int = 10
   ): [ResolvedIdentifierMPA]
-  "Fetch all resolved identifier provider"
+  "[view] Fetch all resolved identifier provider"
   getResolvedIdentifierProviders: [ResolvedIdentifierProvider]
-  "Fetches a list of resolved identifier providers by label"
+  "[view] Fetches a list of resolved identifier providers by label"
   getResolvedIdentifierProvidersByLabel(
     "The label of the provider"
     label: String = "arXiv.org"
   ): [ResolvedIdentifierProvider]
-  "Fetches a paginated list of resolved identifier providers"
+  "[view] Fetches a paginated list of resolved identifier providers"
   getResolvedIdentifierProvidersPaged(
     "Indicates the page number. Page number must be >= 1."
     page: Int = 1,
     "Page size must be between 1 and 100."
     size: Int = 10
   ): [ResolvedIdentifierProvider]
-  "Fetch all resolved identifier schemes"
+  "[view] Fetch all resolved identifier schemes"
   getResolvedIdentifierSchemes: [ResolvedIdentifierScheme]
-  "Fetches a list of resolved identifier scheme by label"
+  "[view] Fetches a list of resolved identifier scheme by label"
   getResolvedIdentifierSchemesByLabel(
     "The label of the Scheme"
     label: String = "URN:NBN"
   ): [ResolvedIdentifierScheme]
-  "Fetches a paginated list of resolved identifier schemes"
+  "[view] Fetches a paginated list of resolved identifier schemes"
   getResolvedIdentifierSchemesPaged(
     "Indicates the page number. Page number must be >= 1."
     page: Int = 1,
     "Page size must be between 1 and 100."
     size: Int = 10
   ): [ResolvedIdentifierScheme]
-  "Fetches resolved identifier stack "
+  "[view] Fetches resolved identifier stack "
   getResolvedIdentifierStack: [ResolvedIdentifierStack]
-  "Fetches a list of resolved identifier stacks by Actor"
+  "[view] Fetches a list of resolved identifier stacks by Actor"
   getResolvedIdentifierStackByActor(
     "The name of the actor"
     actor: String = "Authority"
   ): [ResolvedIdentifierStack]
-  "Fetches a Resolved Identifier Stack by Id"
+  "[view] Fetches a Resolved Identifier Stack by Id"
   getResolvedIdentifierStackById(
     "The id of the Identifier"
     id: String = "pid_graph:998B7874"
   ): ResolvedIdentifierStack
-  "Fetches a list of resolved identifier stacks by Label"
+  "[view] Fetches a list of resolved identifier stacks by Label"
   getResolvedIdentifierStackByLabel(
     "The label of the identifier"
     label: String = "DONA"
   ): [ResolvedIdentifierStack]
-  "Fetches a list of resolved identifier stacks by Identifiers Label"
+  "[view] Fetches a list of resolved identifier stacks by Identifiers Label"
   getResolvedIdentifierStackByLabelIdentifier(
     "The label of the Identifier"
     label: String = "DOI"
   ): [ResolvedIdentifierStack]
-  "Fetches a paginated list of resolved identifier Stack"
+  "[view] Fetches a paginated list of resolved identifier Stack"
   getResolvedIdentifierStackPaged(
     "Indicates the page number. Page number must be >= 1."
     page: Int = 1,
     "Page size must be between 1 and 100."
     size: Int = 10
   ): [ResolvedIdentifierStack]
-  "Fetches resolved identifier standard "
+  "[view] Fetches resolved identifier standard "
   getResolvedIdentifierStandards: [ResolvedIdentifierStandard]
-  "Fetches resolved identifier standard from the database by label."
+  "[view] Fetches resolved identifier standard from the database by label."
   getResolvedIdentifierStandardsByLabel(
     "The label of the Standard"
     label: String = "Bibcode Published Schema"
   ): [ResolvedIdentifierStandard]
-  "Fetches a paginated list of resolved identifier standard"
+  "[view] Fetches a paginated list of resolved identifier standard"
   getResolvedIdentifierStandardsPaged(
     "Indicates the page number. Page number must be >= 1."
     page: Int = 1,
     "Page size must be between 1 and 100."
     size: Int = 10
   ): [ResolvedIdentifierStandard]
-  "Fetches a Scheme by Id"
+  "[entity] Fetches a Scheme by Id"
   getSchemeById(
     "The id of the scheme"
     id: String = "pid_graph:466E3789"
   ): Scheme
-  "Get All Schemes"
+  "[entity] Get All Schemes"
   getSchemes: [Scheme]
-  "Fetches a Standard by Id"
+  "[entity] Fetches a StandardBody by Id"
+  getStandardBodyById(
+    "The id of the StandardsBody"
+    id: String = "pid_graph:FCDAACDB"
+  ): StandardsBody
+  "[entity] Fetches a Standard by Id"
   getStandardById(
     "The id of the standard"
     id: String = "pid_graph:FCDAACDB"
   ): Standard
-  "Fetches a paginated list of Standards"
+  "[entity] Fetches a paginated list of Scheme"
   getStandardByPage(
     "Indicates the page number. Page number must be >= 1."
     page: Int = 1,
     "Page size must be between 1 and 100."
     size: Int = 10
-  ): [Standard]
-  "Get All Standards"
+  ): [Scheme]
+  "[entity] Get All Standards"
   getStandards: [Standard]
-  "Fetches All Managers"
-  managers: [Manager]
-  "Fetches a list of properties stacks combined by search"
+  "[entity] Get All StandardsBodies"
+  getStandardsBody: [StandardsBody]
+  "[entity] Fetches a paginated list of StandardsBodies"
+  getStandardsBodyByPage(
+    "Indicates the page number. Page number must be >= 1."
+    page: Int = 1,
+    "Page size must be between 1 and 100."
+    size: Int = 10
+  ): [StandardsBody]
+  "[view] Fetches a list of properties stacks combined by search"
   searchPropertiesStackCombinedStack(
     "Search by labelProperty, lodIDN, labelIdentifier, value"
     search: String = "hasProperty"
   ): [PropertiesStackCombined]
-  "Fetches a list of resolved identifier stacks by search"
+  "[view] Fetches a list of resolved identifier stacks by search"
   searchResolvedIdentifierStack(
     "Search by actor, labelIdentifier, label"
     search: String = "MPA"
@@ -361,83 +436,150 @@ type Query {
 }
 
 type ResolvedIdentifierAuthority {
+  "The name of the actor"
   actor: String
   label: String
+  "The label for the Identifier"
   labelIdentifier: String
   lod: String
+  "The unique identifier of the actor"
   lodAct: String
+  "The unique identifier of the Identifier"
   lodIDN: String
 }
 
 type ResolvedIdentifierMPA {
+  "The name of the Actor"
   actor: String
+  "The label for the Identifier"
   labelIdentifier: String
   labelMPA: String
+  "The actor that  is to be registered"
   lodAct: String
+  "The unique identifier of the Identifier"
   lodIdn: String
   lodMPA: String
 }
 
 type ResolvedIdentifierProvider {
+  "The name of the actor"
   actor: String
+  "The label for the Identifier"
   labelIdentifier: String
+  "The label of the Provider"
   labelProvider: String
+  "The unique identifier of the actor"
   lodAct: String
+  "The unique identifier of the Identifier"
   lodIdn: String
+  "The unique identifier of the Provider"
   lodPrv: String
 }
 
 type ResolvedIdentifierScheme {
+  "The name of the Actor"
   actor: String
+  "The label of the Scheme"
   label: String
+  "The label for the Identifier"
   labelIdentifier: String
+  "The unique identifier of the Scheme"
   lod: String
+  "The unique identifier of the actor"
   lodAct: String
+  "The unique identifier of the Identifier"
   lodIDN: String
 }
 
 type ResolvedIdentifierStack {
+  "The name of the Actor"
   actor: String
   label: String
+  "The label for the Identifier"
   labelIdentifier: String
   lod: String
+  "The unique identifier of the actor"
   lodAct: String
+  "The unique identifier of the Identifier"
   lodIDN: String
 }
 
 type ResolvedIdentifierStandard {
+  "The name of the actor"
   actor: String
+  "The label of the Standard"
   label: String
+  "The label for the Identifier"
   labelIdentifier: String
+  "The unique identifier of the Standard"
   lod: String
+  "The actor that is to be registered"
   lodAct: String
+  "The unique identifier of the Identifier"
   lodIDN: String
 }
 
 type Scheme {
+  "The description of the Scheme"
   descScheme: String
-  iDSCH: Int
+  "The identifier of the Scheme"
+  idSCH: Int
+  "The label of the Scheme"
   labelScheme: String
+  "lastTouch"
   lastTouch: String
+  "Unique identifier for the Scheme"
   lodSCH: String
-  lodSCH_V: String
+  "The unique identifier of the Type Scheme"
   lodTSC: String
+  "The name of the Scheme"
+  nameSCH: String
+  "populatedBy"
   populatedBy: String
-  sCH: String
-  "ISO-8601"
+  "startDate (ISO-8601)"
   startDate: DateTime
+  "The version of the Scheme"
+  version: String
 }
 
 type Standard {
+  "The description of the Standard"
   descStandard: String
-  iDSTD: Int
+  "The identifier of the Standard"
+  idSTD: Int
+  "The label of the Standard"
   labelStandard: String
+  "lastTouch"
   lastTouch: String
+  "The identifier of the Standard"
   lodSTD: String
+  "The version of the Standard"
   lodSTD_V: String
+  "The unique identifier of the Type Standard"
   lodTST: String
+  "The name of the Standard"
+  nameSTD: String
+  "populatedBy"
   populatedBy: String
-  sTD: String
-  "ISO-8601"
+  "startDate (ISO-8601)"
   startDate: DateTime
+}
+
+type StandardsBody {
+  "The description of the StandardsBody"
+  descStandardsBody: String
+  "The identifier of the StandardsBody"
+  idSTB: Int
+  "The label of the StandardsBody"
+  labelStandardsBody: String
+  "lastTouch"
+  lastTouch: String
+  "The unique identifier of the StandardsBody"
+  lodSTB: String
+  "The name of the StandardsBody"
+  nameSTB: String
+  "populatedBy"
+  populatedBy: String
+  "The version of the StandardsBody"
+  version: String
 }
