@@ -2,13 +2,14 @@
 title: "User Guide - Dashboard/ Search and Discovery"
 sidebar_position: 2
 ---
+
 # Dashboard/Search and Discovery
 
 The Dashboard/ Search and Discovery feature in the Compliance Assessment Toolkit (CAT) assists end users with finding Identifiers that suit their use cases and applications. It uses information from a PID Knowledge Base, maintained and curated by DANS on behalf of the FAIRCORE4EOSC project and EUDAT, and on information about PID Policy compliance obtained from the CAT directly.
 
 You do not have to be logged in to make use of the Dashboard/ Search and Discovery service.
 
-import dashboard from '/img/dashbord/dashboard.png';
+import dashboard from '/img/dashboard/dashboard.png';
 <img src={dashboard} alt="Dashboard Search and Discovery" style={{width: 600}} />
 
 ## Dashboard/ Search and Discovery Are Interlinked
@@ -21,5 +22,7 @@ The selection actions in the Dashboard are also shared to the Search and Discove
 
 The current scope of selected facets are shown in the top left of these pages as ‘Active Filters’. 
 
-import dashboard_interlinked from '/img/dashbord/dashboard_interlinked.png';
+import dashboard_interlinked from '/img/dashboard/dashboard_interlinked.png';
 <img src={dashboard_interlinked} alt="Dashboard Search and Discovery" style={{width: 600}} />
+
+
