@@ -13,9 +13,7 @@ import referenced_entity from '/img/dashboard/entity_referenced_entity.png';
 
 <img src={referenced_entity} alt="Referenced Entity" style={{width: 600}} />
 
-You can filter for specific entities by typing in the 'Filter' box, and you can sort the list alphabetically or by the number of occurrences. Use the paging tool
-<123..>
-to navigate between the pages of entities.
+You can filter for specific entities by typing in the 'Filter' box, and you can sort the list alphabetically or by the number of occurrences. Use the paging tool \<123..\> to navigate between the pages of entities.
 
 ### Endorsed / Recommended By
 
@@ -90,12 +88,12 @@ You can click on a sector in the pie chart to filter for all Identifiers that ha
 
 The Namespace Type is linked to the uniqueness of an identifier. Several practices are identifiable in the PID landscape:
 
- - Unique Hash: the identifier will always be globally unique since it is a content-derived hash
- - Static Prefix/ Unique Hash: a prefix is used to ensure that all identifiers are recognisable as a specific type, in addition to a unique hash (for example SWHID
- - Semantic Prefix/ Unique Hash: a prefix is used to ensure that all identifiers are recognisable as a specific type, in addition to a unique hash (for example dPID)
- - Semantic Prefix: a prefix (namespace) guarantees uniqueness and identifies for example a provider, and identifier type or a scientific discipline
- - Static prefix: the prefix guarantees uniqueness but it is otherwise meaningless
- - No prefix: no prefix is present, and Identifiers are not necessarily globally unique unless some additional context is known (for example all local identifiers in a specific database).
+ - **Unique Hash**: the identifier will always be globally unique since it is a content-derived hash
+ - **Static Prefix/ Unique Hash**: a prefix is used to ensure that all identifiers are recognisable as a specific type, in addition to a unique hash (for example SWHID
+ - **Semantic Prefix/ Unique Hash**: a prefix is used to ensure that all identifiers are recognisable as a specific type, in addition to a unique hash (for example dPID)
+ - **Semantic Prefix**: a prefix (namespace) guarantees uniqueness and identifies for example a provider, and identifier type or a scientific discipline
+ - **Static prefix**: the prefix guarantees uniqueness but it is otherwise meaningless
+ - **No prefix**: no prefix is present, and Identifiers are not necessarily globally unique unless some additional context is known (for example all local identifiers in a specific database).
 
 import entity_namespace from '/img/dashboard/entity_namespace.png';
 
@@ -111,6 +109,7 @@ Not all Identifiers are persistent, and if they are, the type of persistence var
  - Explicit: The identifier was designed and is asserted to be persistent, for example an ARK or a Handle.
 
 For each of these options, we sometimes add a qualifier:
+
  - Yes: in practice, this acts as if it is persistent in the long term.
  - No: inpractice, there is no expectation that the identifier will be persistent.
 
@@ -157,9 +156,7 @@ import entity_authority from '/img/dashboard/entity_authority.png';
 
 <img src={entity_authority} alt="Authority" style={{width: 600}} />
 
-You can filter for specific Authorities by typing in the 'Filter' box, and you can sort the list alphabetically or by the number of occurrences. Use the paging tool
-‹123...›
-to navigate between the pages of Authorities.
+You can filter for specific Authorities by typing in the 'Filter' box, and you can sort the list alphabetically or by the number of occurrences. Use the paging tool \‹123...\› to navigate between the pages of Authorities.
 
 ### Scheme
 
@@ -171,9 +168,7 @@ import entity_scheme from '/img/dashboard/entity_scheme.png';
 
 <img src={entity_scheme} alt="Scheme" style={{width: 600}} />
 
-You can filter for specific Schemes by typing in the 'Filter' box, and you can sort the list alphabetically or by the number of occurrences. Use the paging tool
-‹123...›
-to navigate between the pages of Schemes.
+You can filter for specific Schemes by typing in the 'Filter' box, and you can sort the list alphabetically or by the number of occurrences. Use the paging tool \‹123...\› to navigate between the pages of Schemes.
 
 
 ### Standard
@@ -184,8 +179,6 @@ import entity_standard from '/img/dashboard/entity_standard.png';
 
 <img src={entity_standard} alt="Standard" style={{width: 600}} />
 
-You can filter for specific Standards by typing in the 'Filter' box, and you can sort the list alphabetically or by the number of occurrences. Use the paging tool
-< 123...»
-to navigate between the pages of Standards.
+You can filter for specific Standards by typing in the 'Filter' box, and you can sort the list alphabetically or by the number of occurrences. Use the paging tool \<123... to navigate between the pages of Standards.
 
 
