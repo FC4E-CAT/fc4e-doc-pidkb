@@ -1,5 +1,5 @@
 ---
-title: "User Guide - Dashboard/ Search and Discovery"
+title: "Dashboard/ Search and Discovery"
 sidebar_position: 2
 ---
 
