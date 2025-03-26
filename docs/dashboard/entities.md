@@ -1,9 +1,8 @@
 ---
 title: "Entities"
 sidebar_position: 3
+description: "From here you may find detailed information about the entities used in the dashboard"
 ---
-
-## Entities
 
 ### Referenced Entity
 
