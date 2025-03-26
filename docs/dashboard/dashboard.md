@@ -1,6 +1,7 @@
 ---
 title: "Dashboard/ Search and Discovery"
 sidebar_position: 2
+description: "The Dashboard/ Search and Discovery feature assists end users with finding Identifiers that suit their use cases and applications."
 ---
 
 ## Dashboard/Search and Discovery
